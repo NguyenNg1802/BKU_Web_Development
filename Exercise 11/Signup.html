@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="Signup.css">
+    <title>Sign up</title>
+</head>
+
+<body>
+    <fieldset>
+        <legend id="title">SIGN UP</legend>
+        <form method="POST" id="form">
+            Full Name: <br>
+            <input type="text" id="name" name="Name" required>
+            <br>
+            E-mail: <span id="validateEmail"></span> <br>
+            <input type="email" id="email" name="Email" onblur="validateEmail(this.value)" required>
+            <br>
+            Password: <br>
+            <input type="password" id="password" name="Password" pattern="[a-zA-Z0-9]+.{8,}"  required>
+            <br>
+            Retype password: <span id="validatePassword"></span> <br>
+            <input type="password" id="repassword" name="Password" onblur="validatePassword(this.value)" pattern="[a-zA-Z0-9]+.{8,}" required> 
+            <br>
+
+            <button type="button" style="display:table; margin: 0 auto" id="signup" class="btn btn-primary btn-lg">Sign up</button>
+        </form>
+    </fieldset>
+
+    <script src="Signup.js"></script>
+</body>
+
+</html>

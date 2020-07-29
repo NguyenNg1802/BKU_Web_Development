@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Select location</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="text-align:center">Select Province, district, ward</h1>
+        <label for="province">Select province</label>
+        <select class="form-control" id="province" onchange="chooseProvince()">
+            <option>--</option>
+        </select>
+
+        <label for="district">Select district</label>
+        <select class="form-control" id="district" onchange="chooseDistrict()">
+            <option>--</option>
+        </select>
+
+        <label for="ward">Select ward</label>
+        <select class="form-control" id="ward" onchange="chooseWard()">
+            <option>--</option>
+        </select>
+
+        <br>
+        <button type="button" class="btn btn-primary btn-lg center-block" onclick="track()">Submit</button>
+    </div>
+
+    <script>
+        var district = document.getElementById("district");
+        var ward = document.getElementById("ward");
+        var province_choosed = undefined;
+        var district_choosed = undefined;
+        var ward_choosed = undefined;
+
+        function retreiveProvince() {
+            let province = document.getElementById("province");
+            let xmlthttp = new XMLHttpRequest();
+            xmlthttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    let result = this.responseText.split(',');
+                    for (let i = 0; i < result.length; i++) {
+                        let option = document.createElement("option");
+                        option.text = result[i];
+                        option.value = result[i];
+                        province.add(option);
+                    }
+                }
+            }
+            xmlthttp.open("POST", "Province.php", true);
+            xmlthttp.send();
+        }
+
+        function retreiveDistrict() {
+            let district = document.getElementById("district");
+            let xmlthttp = new XMLHttpRequest();
+            xmlthttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    let result = this.responseText.split(',');
+                    for (let i = 0; i < result.length; i++) {
+                        let option = document.createElement("option");
+                        option.text = result[i];
+                        option.value = result[i];
+                        district.add(option);
+                    }
+                }
+            }
+            xmlthttp.open("POST", "District.php", true);
+            xmlthttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xmlthttp.send("name=" + province_choosed);
+        }
+
+        function retreiveWard() {
+            let ward = document.getElementById("ward");
+            let xmlthttp = new XMLHttpRequest();
+            xmlthttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    let result = this.responseText.split(',');
+                    for (let i = 0; i < result.length; i++) {
+                        let option = document.createElement("option");
+                        option.text = result[i];
+                        option.value = result[i];
+                        ward.add(option);
+                    }
+                }
+            }
+            xmlthttp.open("POST", "Ward.php", true);
+            xmlthttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xmlthttp.send("name=" + district_choosed);
+        }
+
+        function chooseProvince() {
+            province_choosed = document.getElementById("province").value;
+            $("#district")
+                .empty()
+                .append("<option>--</option>");
+            $("#ward")
+                .empty()
+                .append("<option>--</option>");
+            retreiveDistrict();
+        }
+
+        function chooseDistrict() {
+            district_choosed = document.getElementById("district").value;
+            $("#ward")
+                .empty()
+                .append("<option>--</option>");
+            retreiveWard();
+        }
+
+        function chooseWard() {
+            ward_choosed = document.getElementById("ward").value;
+        }
+
+        function track() {
+            alert("I live in " + province_choosed + ", " + district_choosed + ", " + ward_choosed);
+        }
+
+        retreiveProvince();
+
+    </script>
+</body>
+
+</html>

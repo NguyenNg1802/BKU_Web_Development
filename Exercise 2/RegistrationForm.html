@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="RegistrationForm.css">
+    <title>Registration Form</title>
+</head>
+
+<body>
+    <fieldset>
+        <legend id="title">Registation Form</legend>
+        <form method="POST">
+            Name: <input type="text" id="InputName" name="Name" required>
+            <br>
+            Student ID: <input type="text" id="InputId" name="StudentId" required>
+            <br>
+            Gender: <input type="radio" id="Male" name="Gender" value="male"> Male
+            <input type="radio" id="Female" name="Gender" value="female"> Female
+            <input type="radio" id="Other" name="Gender" value="other"> Other
+
+            <br>
+
+            Go To School By: <input type="checkbox" name="GoToSchoolBy" value="Motorcycle"> Motorcycle
+            <input type="checkbox"  name="GoToSchoolBy" value="Bus"> Bus <br>
+
+            <input type="submit" id="Submit" style="display:table; margin: 0 auto">
+        </form>
+    </fieldset>
+
+    <script src="RegistrationForm.js"></script>
+</body>
+
+</html>

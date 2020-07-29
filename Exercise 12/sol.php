@@ -1,0 +1,1 @@
+Khi login vao, thì dau tien minh pai check cookie xem có phai đó là user hay ko sau đó mình check session

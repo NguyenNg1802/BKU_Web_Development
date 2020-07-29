@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Area</title>
+</head>
+<body>
+    <h1>Area of a traingle: <span id="area"></span> </h1>
+    
+    <script>
+        var f = () => {
+            var a = 5;
+            var b = 6;
+            var c = 7;
+            var p = (a+b+c)/2;
+            return Math.sqrt(p*(p-a)*(p-b)*(p-c));
+        };
+        document.getElementById("area").innerText = f();
+    </script>
+</body>
+</html>

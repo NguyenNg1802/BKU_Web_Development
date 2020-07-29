@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+}
+
+#banner {
+    background-color: red;
+    text-align: center;
+    font-size: 3em;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+#service {
+    background-color: blue;
+    text-align: center;
+    font-size: 3em;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+aside {
+    float: left;
+    width: 30%;
+    background-color: aqua;
+    padding: 10%;
+    height: 500px;
+    font-size: 3em;
+    text-align: center;
+}
+
+article {
+    float: left;
+    padding: 10%;
+    width: 70%;
+    background-color: aquamarine;
+    height: 500px;
+    font-size: 3em;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    background-color: bisque;
+    font-size: 3em;
+}
